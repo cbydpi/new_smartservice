@@ -9,6 +9,9 @@ import '@/element-ui'               // api: https://github.com/ElemeFE/element
 import '@/icons'                    // api: http://www.iconfont.cn/
 import '@/assets/scss/index.scss'
 import { isAuth } from '@/utils'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 
 Vue.use(VueCookie)
 Vue.config.productionTip = false
