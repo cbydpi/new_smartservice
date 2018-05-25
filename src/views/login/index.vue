@@ -91,6 +91,7 @@
       // 获取验证码
       getCaptcha () {
         this.dataForm.uuid = getUUID()
+        console.log(this.dataForm.uuid)
         this.captchaPath = API.common.captcha(this.dataForm.uuid)
       }
     }
