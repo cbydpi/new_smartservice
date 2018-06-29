@@ -32,7 +32,8 @@ export default new Router({
         { path: '/config', component: _import('config/index'), name: 'config', desc: '参数管理', meta: { isTab: true } },
         { path: '/oss', component: _import('oss/index'), name: 'oss', desc: '文件上传', meta: { isTab: true } },
         { path: '/log', component: _import('log/index'), name: 'log', desc: '系统日志', meta: { isTab: false } },
-        { path: '/sence', component: _import('sence/index'), name: 'sence', desc: '场景录入', meta: { isTab: false } }
+        { path: '/sence', component: _import('sence/index'), name: 'sence', desc: '场景录入', meta: { isTab: true } },
+				{ path: '/data', component: _import('data/index'), name: 'data', desc: '数据统计', meta: { isTab: true } },
       ],
       beforeEnter (to, from, next) {
         let token = Vue.cookie.get('token')
