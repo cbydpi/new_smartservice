@@ -18,7 +18,7 @@
     :index="menuNav.menuId + ''"
     :data-idx="menuNav.menuId + ''"
     @click="gotoRouteHandle(menuNav.url)">
-    <icon-svg :name="menuNav.icon" class="site-sidebar__menu-icon"></icon-svg>
+    <icon-svg :name="menuNav.icon || ''" class="site-sidebar__menu-icon"></icon-svg>
     <span>{{ menuNav.name }}</span>
   </el-menu-item>
 </template>

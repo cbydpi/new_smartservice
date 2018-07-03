@@ -1,5 +1,5 @@
 <template>
-  <div style='border: solid 1px black width:100% height:400px'></div>
+  <div style='border: solid 1px black;width:100%;height:400px'></div>
 </template>
 
 <script>
