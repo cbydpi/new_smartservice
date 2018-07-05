@@ -1,6 +1,6 @@
 ```bash
 # 克隆项目
-git clone https://github.com/daxiongYang/renren-fast-vue.git
+
 
 # 安装依赖(优先使用)
 npm install
