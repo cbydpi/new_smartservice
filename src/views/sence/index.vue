@@ -3,7 +3,7 @@
     <!--这是场景录入页面,-->
 
     <!--<rich-text @richTextContent='getRichTextData'></rich-text>-->
-    <sence-modul ref='diag' v-bind:model-data='diagramData' v-on:model-changed='modelChanged' v-on:changed-selection='changedSelection'></sence-modul>
+    <sence-modul ref='diag' v-bind:model-data='diagramData' v-on:model-changed='modelChanged' v-on:changed-selection='changedSelection' @deleteNode='deleteNode'></sence-modul>
     <!--<button v-on:click='addNode'>Add Child to Gamma</button>
     <button v-on:click='modifyStuff'>Modify view model data without undo</button>
     <br/>Current Node:
@@ -17,17 +17,7 @@
   // 这是富文本引入
   import RichText from '@/components/rich-text'
   import go from 'gojs'
-  //  export default {
-  //  components: {
-  //    RichText
-  //  },
-  //  methods: {
-  //    getRichTextData (data) {
-  //    console.log(data)
-  //    }
-  //  }
-  //  }
-  import SenceModul from './sence-modul'
+  import SenceModul from '@/components/sence'
   export default {
     components: {
       SenceModul,
@@ -182,9 +172,19 @@
 
       // this event listener is declared on the <diagram>
       modelChanged: function (e) {
+//      console.log(e)
         if (e.isTransactionFinished) { // show the model data in the page's TextArea
           this.savedModelText = e.model.toJson()
         }
+      },
+
+      deleteNode: function (data) {
+        data.diagram.commandHandler.deleteSelection()
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+        console.log(data)
       },
 
       changedSelection: function (e) {
