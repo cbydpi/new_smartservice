@@ -64,6 +64,13 @@
         }
       }
 
+      function mayWorkFor (node1, node2) {
+        if (!(node1 instanceof go.Node)) return false // must be a Node
+        if (node1 === node2) return false // cannot work for yourself
+        if (node2.isInTreeOf(node1)) return false // cannot work for someone who works for you
+        return true
+      }
+
       myDiagram.nodeTemplate =
         $(go.Node, 'Auto', {
           doubleClick: function (e, node, prev) {
@@ -71,13 +78,73 @@
           }
         }, {
           mouseDragEnter: function (e, node, prev) {
-
+            var diagram = node.diagram
+            var selnode = diagram.selection.first()
+//          if (!mayWorkFor(selnode, node)) return
+            var shape = node.findObject("SHAPE")
+            if (shape) {
+              shape._prevFill = shape.fill // remember the original brush
+              shape.fill = "darkred"
+            }
           },
           mouseDragLeave: function (e, node, next) {
-
+            var shape = node.findObject("SHAPE")
+            if (shape && shape._prevFill) {
+              shape.fill = shape._prevFill // restore the original brush
+            }
           },
           mouseDrop: function (e, node) {
-
+            var diagram = node.diagram
+            var selnode = diagram.selection.first()
+            e.diagram.currentTool.doCancel()
+            if (selnode.data.key === undefined) {
+              if (mayWorkFor(selnode, node)) {
+                self.$confirm('确定移动此节点?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'info'
+                }).then(() => {
+                  var link = selnode.findTreeParentLink()
+                  if (link !== null) {
+                    myDiagram.startTransaction('add employee')
+                    link.fromNode = node
+                    myDiagram.commitTransaction('add employee')
+                  } else {
+                    myDiagram.startTransaction('add employee')
+                    diagram.toolManager.linkingTool.insertLink(node, node.port, selnode, selnode.port)
+                    myDiagram.commitTransaction('add employee')
+                  }
+                  self.$message({
+                    type: 'success',
+                    message: '移动成功!'
+                  })
+                }).catch(() => {
+                  self.$message({
+                    type: 'info',
+                    message: '已取消移动'
+                  })
+                })
+              }
+            } else {
+              self.$confirm('确定添加此模板?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'info'
+              }).then(() => {
+                myDiagram.startTransaction('add employee')
+                myDiagram.model.addNodeData({'id': 1900, 'parentId': 1636, 'content': '模板', 'description': '模板'})
+                myDiagram.commitTransaction('add employee')
+                self.$message({
+                  type: 'success',
+                  message: '添加成功!'
+                })
+              }).catch(() => {
+                self.$message({
+                  type: 'info',
+                  message: '已取消添加'
+                })
+              })
+            }
           }
         },
         $(go.Shape, 'Rectangle', {
@@ -166,10 +233,11 @@
         go.TreeLayout.prototype.commitNodes.call(myDiagram.layout)
         myDiagram.layout.network.vertexes.each(function (v) {
           if (v.node) {
+            var color
             if (v.node.data.id > -1) {
-              var color = '#18D2D1'
+              color = '#18D2D1'
             } else {
-              var color = '#F0AD4E'
+              color = '#F0AD4E'
             }
             var shape = v.node.findObject('SHAPE')
             if (shape) {
@@ -312,11 +380,11 @@
       myPalette.model = new go.GraphLinksModel(paletteData)
 // 模板列表完成
       this.diagram = myDiagram
-      let updateModelData = JSON.stringify(this.modelData.nodeDataArray)
+//    let updateModelData = JSON.stringify(this.modelData.nodeDataArray)
 //    updateModelData = updateModelData.replace(/parentId/g, 'parent')
 //    updateModelData = updateModelData.replace(/content/g, 'name')
 //    updateModelData = updateModelData.replace(/id/g, 'key')
-      this.modelData.nodeDataArray = JSON.parse(updateModelData)
+//    this.modelData.nodeDataArray = JSON.parse(updateModelData)
 //    myDiagram.model =
 //      $(go.TreeModel,
 //        { nodeParentKeyProperty: "parent",  // this property refers to the parent node data
