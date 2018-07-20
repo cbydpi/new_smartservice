@@ -26,113 +26,118 @@
     data () {
       return {
         diagramData: { // passed to <diagram> as its modelData
-          nodeDataArray: [{
-            'id': 1636,
-            'contentId': null,
-            'senceNo': '43',
-            'content': '奥法的产品优势有：1.从通用化到场景化。2.从标准化到个性化。3.智能巡检。4.从技术到数据应用。您想详细了解哪个呢？',
-            'level': 0,
-            'parentId': 0,
-            'keyword': '(奥法).*(产品).*(优势)',
-            'description': '奥法产品的优势是什么',
-            'status': 0,
-            'weight': null,
-            'username': 'admin',
-            'contentSign': 1610,
-            'voiceId': null,
-            'voice': null,
-            'remark': null,
-            'extendList': null,
-            'commadList': [],
-            'contentType': 1,
-            'cbContent': ''
-          }, {
-            'id': 1637,
-            'contentId': null,
-            'senceNo': '43',
-            'content': '通用化到场景化，既可以实现通用法问答服务，也拥有灵活的场景化服务，引导用户与机器人流畅的对话，多轮交互，提高体验。',
-            'level': 1,
-            'parentId': 1636,
-            'keyword': '(通用化)',
-            'description': '通用化',
-            'status': 2,
-            'weight': null,
-            'username': 'admin',
-            'contentSign': 1612,
-            'voiceId': null,
-            'voice': null,
-            'remark': null,
-            'extendList': null,
-            'commadList': [],
-            'contentType': 1,
-            'cbContent': ''
-          }, {
-            'id': 1638,
-            'contentId': null,
-            'senceNo': '43',
-            'content': '从标准化到个性化，是指，针对不同的业务领域，将配置不同的数据训练模式、积累不同自学习逻辑，达到精准服务。',
-            'level': 1,
-            'parentId': 1636,
-            'keyword': '(标准化)',
-            'description': '标准化',
-            'status': 2,
-            'weight': null,
-            'username': 'admin',
-            'contentSign': 1613,
-            'voiceId': null,
-            'voice': null,
-            'remark': null,
-            'extendList': null,
-            'commadList': [],
-            'contentType': 1,
-            'cbContent': ''
-          }, {
-            'id': 1639,
-            'contentId': null,
-            'senceNo': '43',
-            'content': '智能巡检是指，实时监控数据，准确把握数据积累过程，确保知识的准确性。',
-            'level': 1,
-            'parentId': 1636,
-            'keyword': '(智能).*(巡检)',
-            'description': '智能巡检',
-            'status': 2,
-            'weight': null,
-            'username': 'admin',
-            'contentSign': 1614,
-            'voiceId': null,
-            'voice': null,
-            'remark': null,
-            'extendList': null,
-            'commadList': [],
-            'contentType': 1,
-            'cbContent': ''
-          }, {
-            'id': 1640,
-            'contentId': null,
-            'senceNo': '43',
-            'content': '从技术到数据应用，我们不仅会产生一个专业的知识图谱，以及基于专用图谱之上的自然语言理解的技术，提升整个领域的生产力和行业效率。在后期数据清洗与算法优化的基础上，实现可视化的舆情数据报告和对趋势的智能化预测。',
-            'level': 1,
-            'parentId': 1636,
-            'keyword': '(数据)',
-            'description': '数据',
-            'status': 2,
-            'weight': null,
-            'username': 'admin',
-            'contentSign': 1615,
-            'voiceId': null,
-            'voice': null,
-            'remark': null,
-            'extendList': null,
-            'commadList': [],
-            'contentType': 1,
-            'cbContent': ''
-          }],
-          'class': 'go.TreeModel'
+
         }
 //      currentNode: null,
 //      savedModelText: '',
 //      counter: 1, // used by addNode
 //      counter2: 4 // used by modifyStuff
+      }
+    },
+    mounted () {
+      this.diagramData = {
+        nodeDataArray: [{
+          'id': 1636,
+          'contentId': null,
+          'senceNo': '43',
+          'content': '奥法的产品优势有：1.从通用化到场景化。2.从标准化到个性化。3.智能巡检。4.从技术到数据应用。您想详细了解哪个呢？',
+          'level': 0,
+          'parentId': 0,
+          'keyword': '(奥法).*(产品).*(优势)',
+          'description': '奥法产品的优势是什么',
+          'status': 0,
+          'weight': null,
+          'username': 'admin',
+          'contentSign': 1610,
+          'voiceId': null,
+          'voice': null,
+          'remark': null,
+          'extendList': null,
+          'commadList': [],
+          'contentType': 1,
+          'cbContent': ''
+        }, {
+          'id': 1637,
+          'contentId': null,
+          'senceNo': '43',
+          'content': '通用化到场景化，既可以实现通用法问答服务，也拥有灵活的场景化服务，引导用户与机器人流畅的对话，多轮交互，提高体验。',
+          'level': 1,
+          'parentId': 1636,
+          'keyword': '(通用化)',
+          'description': '通用化',
+          'status': 2,
+          'weight': null,
+          'username': 'admin',
+          'contentSign': 1612,
+          'voiceId': null,
+          'voice': null,
+          'remark': null,
+          'extendList': null,
+          'commadList': [],
+          'contentType': 1,
+          'cbContent': ''
+        }, {
+          'id': 1638,
+          'contentId': null,
+          'senceNo': '43',
+          'content': '从标准化到个性化，是指，针对不同的业务领域，将配置不同的数据训练模式、积累不同自学习逻辑，达到精准服务。',
+          'level': 1,
+          'parentId': 1636,
+          'keyword': '(标准化)',
+          'description': '标准化',
+          'status': 2,
+          'weight': null,
+          'username': 'admin',
+          'contentSign': 1613,
+          'voiceId': null,
+          'voice': null,
+          'remark': null,
+          'extendList': null,
+          'commadList': [],
+          'contentType': 1,
+          'cbContent': ''
+        }, {
+          'id': 1639,
+          'contentId': null,
+          'senceNo': '43',
+          'content': '智能巡检是指，实时监控数据，准确把握数据积累过程，确保知识的准确性。',
+          'level': 1,
+          'parentId': 1636,
+          'keyword': '(智能).*(巡检)',
+          'description': '智能巡检',
+          'status': 2,
+          'weight': null,
+          'username': 'admin',
+          'contentSign': 1614,
+          'voiceId': null,
+          'voice': null,
+          'remark': null,
+          'extendList': null,
+          'commadList': [],
+          'contentType': 1,
+          'cbContent': ''
+        }, {
+          'id': 1640,
+          'contentId': null,
+          'senceNo': '43',
+          'content': '从技术到数据应用，我们不仅会产生一个专业的知识图谱，以及基于专用图谱之上的自然语言理解的技术，提升整个领域的生产力和行业效率。在后期数据清洗与算法优化的基础上，实现可视化的舆情数据报告和对趋势的智能化预测。',
+          'level': 1,
+          'parentId': 1636,
+          'keyword': '(数据)',
+          'description': '数据',
+          'status': 2,
+          'weight': null,
+          'username': 'admin',
+          'contentSign': 1615,
+          'voiceId': null,
+          'voice': null,
+          'remark': null,
+          'extendList': null,
+          'commadList': [],
+          'contentType': 1,
+          'cbContent': ''
+        }],
+        'class': 'go.TreeModel'
       }
     },
     computed: {
@@ -184,11 +189,11 @@
           type: 'success',
           message: '删除成功!'
         })
-        console.log(data)
+//      console.log(data)
       },
 
       changedSelection: function (e) {
-        console.log('changeselect')
+//      console.log('changeselect')
         var node = e.diagram.selection.first()
         if (node instanceof go.Node) {
           this.currentNode = node
