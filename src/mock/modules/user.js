@@ -1,7 +1,7 @@
 // 获取用户列表
 export function list () {
   return {
-    // isOpen: false,
+//     isOpen: true,
     url: '/sys/user/list',
     type: 'get',
     data: {

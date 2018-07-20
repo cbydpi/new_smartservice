@@ -78,17 +78,17 @@
           }
         }, {
           mouseDragEnter: function (e, node, prev) {
-            var diagram = node.diagram
-            var selnode = diagram.selection.first()
+//          var diagram = node.diagram
+//          var selnode = diagram.selection.first()
 //          if (!mayWorkFor(selnode, node)) return
-            var shape = node.findObject("SHAPE")
+            var shape = node.findObject('SHAPE')
             if (shape) {
               shape._prevFill = shape.fill // remember the original brush
-              shape.fill = "darkred"
+              shape.fill = 'darkred'
             }
           },
           mouseDragLeave: function (e, node, next) {
-            var shape = node.findObject("SHAPE")
+            var shape = node.findObject('SHAPE')
             if (shape && shape._prevFill) {
               shape.fill = shape._prevFill // restore the original brush
             }
@@ -98,7 +98,7 @@
             var selnode = diagram.selection.first()
             e.diagram.currentTool.doCancel()
             if (selnode.data.key === undefined) {
-              if (mayWorkFor(selnode, node)) {
+              if (mayWorkFor(selnode, node) && selnode.data.parentId !== node.data.id) {
                 self.$confirm('确定移动此节点?', '提示', {
                   confirmButtonText: '确定',
                   cancelButtonText: '取消',
@@ -153,8 +153,7 @@
           stroke: null,
           portId: '',
           fromLinkable: false,
-          toLinkable: false,
-          cursor: 'pointer'
+          toLinkable: false
         }),
         $(go.Panel, 'Horizontal',
           $(go.Panel, 'Table', {
