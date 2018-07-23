@@ -54,8 +54,7 @@
         })
 
 // 场景预览
-      var myOverview =
-        $(go.Overview, 'myOverviewDiv', {observed: myDiagram, contentAlignment: go.Spot.Center})
+      var myOverview = $(go.Overview, 'myOverviewDiv', {observed: myDiagram, contentAlignment: go.Spot.Center}) // eslint-disable-line
 
       function textStyle () {
         return {
